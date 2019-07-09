@@ -18,6 +18,11 @@ class MoviesController extends Controller
 
     public function store(Request $request) {
 
+        \Log::info('DDDD');
+        $this->validate($request, Movie::STORE_RULES);
+        \Log::info('SSS');
+
+
         $movie = new Movie();
 
         $movie->title = $request->input('title');

@@ -21,11 +21,10 @@ use App\Movie;
 $factory->define(Movie::class, function (Faker $faker) {
     return [
         'title' => $faker->sentence(),
-        'email' => $faker->unique()->email,
         'director' => $faker->name,
         'imageUrl' => $faker->imageUrl(),
-        'duration' => rand (60, 160)."min",
-        'releaseDate' => $faker -> date_between( -30, today),
+        'duration' => rand (60, 160),
+        'releaseDate' => $faker -> dateTimeThisDecade(),
         'genre' => $faker->word,
     ];
 });

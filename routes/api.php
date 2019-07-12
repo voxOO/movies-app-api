@@ -22,6 +22,3 @@ Route::middleware('api')->get('/movies/{id}', 'MoviesController@show');
 Route::middleware('api')->post('/movies', 'MoviesController@store');
 Route::middleware('api')->put('/movies/{id}' , 'MoviesController@update');
 Route::middleware('api')->delete('/movies/{id}' , 'MoviesController@destroy');
-
-
-

@@ -21,4 +21,10 @@ class Movie extends Model
         'releaseDate' => 'required',
         'imageUrl' => 'url'
     ];
+
+    public function search () {
+        
+       return Model::all();
+ 
+    }
 }

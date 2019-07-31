@@ -9,21 +9,20 @@ use App\Http\Requests\MoviesAddingRules;
 class MoviesController extends Controller
 {
     public function index(Request $request) {
-       
-        // if ($searchTitle = $request->input('title')) {
-        // return Movie::where('title',$searchTitle)->get();
-        // } else {
-        // return Movie::all();
-        // }
-        if ($searchTitle = $request->input('title')) {
-       
-            $searchParam = $request->input('title');
-            return Movie::search();
-            
 
-        } else {
-           return Movie::all();
+        //$searchTitle = $request->input('title');
+       
+        if ($searchTitle = $request->input('title')) 
+        {   
+         //return $searchTitle;   
+         return Movie::where('title', 'like', "%{$searchTitle}%")->get();
+         return Movie::search($searchTitle);    
         }
+         else
+        {
+         return Movie::all();
+        }
+        
     }
 
     public function show($id) {

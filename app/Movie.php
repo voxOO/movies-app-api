@@ -22,9 +22,8 @@ class Movie extends Model
         'imageUrl' => 'url'
     ];
 
-    public function search () {
+    public static function search ($searchterm) {
         
-       return Model::all();
- 
+       return self::where('title', 'like', "%{$searchTerm}%")->get();
     }
 }

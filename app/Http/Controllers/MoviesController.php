@@ -10,18 +10,21 @@ class MoviesController extends Controller
 {
     public function index(Request $request) {
 
-        //$searchTitle = $request->input('title');
+        $searchTitle = $request->input('title');
+        $take = $request->input('take');
+        $skip = $request->input('skip');
        
-        if ($searchTitle = $request->input('title')) 
+        if ($searchTitle) 
         {   
          //return $searchTitle;   
-         return Movie::where('title', 'like', "%{$searchTitle}%")->get();
-         return Movie::search($searchTitle);    
+         return Movie::search($searchTitle,$take,$skip);    
         }
-         else
-        {
+
+        if ($take && $skip) {
+         return Movie::skip($skip)->take($take)->get();
+        }
+
          return Movie::all();
-        }
         
     }
 
